@@ -60,7 +60,7 @@ pipeline {
 
         stage('Deploy to Application Server') {
             steps {
-                sshagent(credentials: ['app-server']) {
+                sshagent(credentials: ['app-server-ssh']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@$APP_SERVER '
                             docker pull $FRONTEND_IMAGE:$TAG
